@@ -1,0 +1,303 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f0f0f0; /* Fundo cinza claro */
+}
+
+/* Seção do Cabeçalho Superior */
+.top-header {
+    background-color: #4CAF50; /* Verde Sustentável */
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center; /* Centraliza o conteúdo */
+    align-items: center;
+    border-bottom: 2px solid #388E3C; /* Borda verde mais escura */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%; /* Ajusta a largura conforme necessário */
+    max-width: 1200px; /* Largura máxima para o conteúdo */
+}
+
+.header-text h1, .header-text h2 {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.header-text h2 {
+    font-size: 0.9em;
+    font-weight: normal;
+    opacity: 0.9;
+}
+
+.search-box {
+    text-align: right;
+}
+
+.search-box input[type="text"] {
+    padding: 5px;
+    border: none;
+    border-radius: 3px;
+    width: 150px;
+    background-color: rgba(255,255,255,0.8);
+    color: #333;
+}
+
+.search-box p {
+    margin: 2px 0;
+    font-size: 0.7em;
+    opacity: 0.8;
+}
+
+/* Navegação Principal */
+.main-nav {
+    background-color: #66BB6A; /* Verde mais claro */
+    padding: 10px 0;
+    border-bottom: 2px solid #4CAF50;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.nav-item {
+    position: relative;
+    padding: 8px 18px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+}
+
+.nav-item:hover {
+    background-color: #81C784;
+}
+
+.nav-item .arrow {
+    margin-left: 5px;
+    font-size: 0.8em;
+}
+
+.nav-item .dropdown-content {
+    display: none; /* Escondido por padrão */
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 180px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 10; /* Acima de outros elementos */
+    top: 100%; /* Posiciona abaixo do item de navegação */
+    left: 0;
+    color: #333; /* Cor do texto para o dropdown */
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: normal;
+}
+
+.nav-item:hover .dropdown-content {
+    display: block; /* Mostra ao passar o mouse */
+}
+
+.dropdown-content p {
+    margin: 5px 0;
+    font-size: 0.9em;
+    padding: 5px 0;
+    transition: background-color 0.2s ease;
+}
+.dropdown-content p:hover {
+    background-color: #e0e0e0;
+    border-radius: 3px;
+}
+
+/* Seção Principal de Conteúdo e Chamada para Ação */
+.main-content-wrapper {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: white;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    padding: 30px;
+}
+
+.introduction-section {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.introduction-section h1 {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.introduction-section p {
+    font-size: 1.1em;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Área da Imagem Central */
+.compost-image-area {
+    min-height: 350px; /* Altura mínima para a imagem */
+    /* COLOQUE AQUI O SEU CÓDIGO BASE64 DA IMAGEM DA COMPOSTAGEM INTEGRADA */
+    background-image: url('https://placehold.co/800x450/A5D6A7/333333?text=IMAGEM+DA+COMPOSTAGEM+INTEGRADA'); /* Placeholder */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    margin-bottom: 40px;
+}
+
+/* Seção de Chamada para Ação */
+.call-to-action-section {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: #E8F5E9; /* Verde muito claro */
+    border-radius: 8px;
+    border: 1px solid #C8E6C9;
+}
+
+.call-to-action-section p {
+    font-size: 1.15em;
+    color: #4CAF50;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.call-to-action-section button {
+    background-color: #8BC34A; /* Verde médio */
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1.1em;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.call-to-action-section button:hover {
+    background-color: #7CB342;
+    transform: translateY(-2px);
+}
+
+.call-to-action-section ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Para quebrar linhas em telas menores */
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.call-to-action-section ul li {
+    font-size: 0.95em;
+    color: #666;
+    background-color: #F1F8E9; /* Fundo mais claro para os itens */
+    padding: 8px 15px;
+    border-radius: 5px;
+    border: 1px solid #DCE775;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+}
+
+/* Seções de Conteúdo (Urbano e Rural) */
+.content-sections {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Duas colunas */
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.content-box {
+    background-color: #F8F8F8;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    border: 1px solid #EEE;
+}
+
+.content-box h3 {
+    font-size: 1.8em;
+    color: #4CAF50;
+    margin-top: 0;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.content-box p {
+    font-size: 1em;
+    color: #666;
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+.content-box ul {
+    list-style: disc;
+    padding-left: 20px;
+    color: #666;
+}
+
+.content-box ul li {
+    margin-bottom: 8px;
+    font-size: 0.95em;
+}
+
+/* Rodapé */
+.footer {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    font-size: 0.9em;
+    border-top: 2px solid #388E3C;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+}
+
+/* Media Queries para Responsividade */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+    .search-box {
+        text-align: center;
+        width: 100%;
+    }
+    .search-box input[type="text"] {
+        width: 80%;
+    }
+    .main-nav ul {
+        flex-direction: column;
+        gap: 5px;
+    }
+    .nav-item {
+        width: 100%;
+        text-align: center;
+    }
+    .nav-item .dropdown-content {
+        position: static; /* Ocupa o fluxo normal em mobile */
+        width: 100%;
+        box-shadow: none;
+        border-top: 1px solid #e0e0e0;
+        border-radius: 0;
+    }
+    .content-sections {
+        grid-template-columns: 1fr; /* Coluna única em telas menores */
+    }
+}
