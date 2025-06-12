@@ -3,624 +3,451 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Horta Uni Flat</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Plataforma de Compostagem Integrada</title>
+    <style>
+        /* CSS Integrado para o Estilo da Página */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f0f0f0; /* Fundo cinza claro */
+        }
+
+        /* Seção do Cabeçalho Superior */
+        .top-header {
+            background-color: #4CAF50; /* Verde Sustentável */
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: center; /* Centraliza o conteúdo */
+            align-items: center;
+            border-bottom: 2px solid #388E3C; /* Borda verde mais escura */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%; /* Ajusta a largura conforme necessário */
+            max-width: 1200px; /* Largura máxima para o conteúdo */
+        }
+
+        .header-text h1, .header-text h2 {
+            margin: 0;
+            font-size: 1.2em;
+        }
+
+        .header-text h2 {
+            font-size: 0.9em;
+            font-weight: normal;
+            opacity: 0.9;
+        }
+
+        .search-box {
+            text-align: right;
+        }
+
+        .search-box input[type="text"] {
+            padding: 5px;
+            border: none;
+            border-radius: 3px;
+            width: 150px;
+            background-color: rgba(255,255,255,0.8);
+            color: #333;
+        }
+
+        .search-box p {
+            margin: 2px 0;
+            font-size: 0.7em;
+            opacity: 0.8;
+        }
+
+        /* Navegação Principal */
+        .main-nav {
+            background-color: #66BB6A; /* Verde mais claro */
+            padding: 10px 0;
+            border-bottom: 2px solid #4CAF50;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .main-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .nav-item {
+            position: relative;
+            padding: 8px 18px;
+            cursor: pointer;
+            color: white;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            border-radius: 5px;
+        }
+
+        .nav-item:hover {
+            background-color: #81C784;
+        }
+
+        .nav-item .arrow {
+            margin-left: 5px;
+            font-size: 0.8em;
+        }
+
+        .nav-item .dropdown-content {
+            display: none; /* Escondido por padrão */
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 180px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 10; /* Acima de outros elementos */
+            top: 100%; /* Posiciona abaixo do item de navegação */
+            left: 0;
+            color: #333; /* Cor do texto para o dropdown */
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: normal;
+        }
+
+        .nav-item:hover .dropdown-content {
+            display: block; /* Mostra ao passar o mouse */
+        }
+
+        .dropdown-content p {
+            margin: 5px 0;
+            font-size: 0.9em;
+            padding: 5px 0;
+            transition: background-color 0.2s ease;
+        }
+        .dropdown-content p:hover {
+            background-color: #e0e0e0;
+            border-radius: 3px;
+        }
+
+        /* Seção Principal de Conteúdo e Chamada para Ação */
+        .main-content-wrapper {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: white;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            padding: 30px;
+        }
+
+        .introduction-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .introduction-section h1 {
+            font-size: 2.5em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .introduction-section p {
+            font-size: 1.1em;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* Área da Imagem Central */
+        .compost-image-area {
+            min-height: 350px; /* Altura mínima para a imagem */
+            background-image: url('https://placehold.co/800x450/A5D6A7/333333?text=IMAGEM+DA+COMPOSTAGEM+INTEGRADA'); /* Placeholder */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            margin-bottom: 40px;
+        }
+
+        /* Seção de Chamada para Ação */
+        .call-to-action-section {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: #E8F5E9; /* Verde muito claro */
+            border-radius: 8px;
+            border: 1px solid #C8E6C9;
+        }
+
+        .call-to-action-section p {
+            font-size: 1.15em;
+            color: #4CAF50;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .call-to-action-section button {
+            background-color: #8BC34A; /* Verde médio */
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1.1em;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .call-to-action-section button:hover {
+            background-color: #7CB342;
+            transform: translateY(-2px);
+        }
+
+        .call-to-action-section ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap; /* Para quebrar linhas em telas menores */
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .call-to-action-section ul li {
+            font-size: 0.95em;
+            color: #666;
+            background-color: #F1F8E9; /* Fundo mais claro para os itens */
+            padding: 8px 15px;
+            border-radius: 5px;
+            border: 1px solid #DCE775;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        /* Seções de Conteúdo (Urbano e Rural) */
+        .content-sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Duas colunas */
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .content-box {
+            background-color: #F8F8F8;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border: 1px solid #EEE;
+        }
+
+        .content-box h3 {
+            font-size: 1.8em;
+            color: #4CAF50;
+            margin-top: 0;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .content-box p {
+            font-size: 1em;
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .content-box ul {
+            list-style: disc;
+            padding-left: 20px;
+            color: #666;
+        }
+
+        .content-box ul li {
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+
+        /* Rodapé */
+        .footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 0.9em;
+            border-top: 2px solid #388E3C;
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* Media Queries para Responsividade */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+            .search-box {
+                text-align: center;
+                width: 100%;
+            }
+            .search-box input[type="text"] {
+                width: 80%;
+            }
+            .main-nav ul {
+                flex-direction: column;
+                gap: 5px;
+            }
+            .nav-item {
+                width: 100%;
+                text-align: center;
+            }
+            .nav-item .dropdown-content {
+                position: static; /* Ocupa o fluxo normal em mobile */
+                width: 100%;
+                box-shadow: none;
+                border-top: 1px solid #e0e0e0;
+                border-radius: 0;
+            }
+            .content-sections {
+                grid-template-columns: 1fr; /* Coluna única em telas menores */
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Seção do Cabeçalho Superior -->
     <header class="top-header">
         <div class="header-content">
             <div class="header-text">
-                <h1>cultivando campo e cidade</h1>
-                <h2>compartilhando conhecimento</h2>
-                <h2>e amizade</h2>
+                <h1>Plataforma de Compostagem Integrada</h1>
+                <h2>Conectando Campo e Cidade para um Futuro Sustentável</h2>
             </div>
             <div class="search-box">
-                <input type="text" placeholde
-
-.right-column-text ul li {
-    margin-bottom: 5px;
-    font-size: 0.9em;
-}
-
-/* Conteúdo oculto para interatividade JavaScript */
-.hidden-content {
-    display: none; /* Escondido por padrão */    <link rel="stylesheet" href="style.css">
-
-    background-color: #ffeccf; /* Fundo laranja claro para o conteúdo revelado */
-    padding: 10px;
-    margin-top: 10px;
-    border-radius: 5px;
-}
-
-.hidden-content p {
-    margin: 5px 0;
-    font-style: italic;
-}
-r="pesquisa">
-                <p>poder digitar</p>
-                <p>aparece teclado</p>
+                <input type="text" placeholder="Buscar na plataforma">
+                <p>Última atualização: 12 de Junho de 2025</p>
             </div>
         </div>
     </header>
 
+    <!-- Navegação Principal -->
     <nav class="main-nav">
         <ul>
+            <li class="nav-item">Início</li>
             <li class="nav-item">
-                <span class="nav-title">cursos <span class="arrow">v</span></span>
+                Guia de Compostagem <span class="arrow">▼</span>
                 <div class="dropdown-content">
-                    <p>como plantar verdura</p>
-                    <p>como molhar corretamente</p>
+                    <p>Compostagem Doméstica</p>
+                    <p>Técnicas Avançadas</p>
+                    <p>Solução de Problemas</p>
                 </div>
             </li>
             <li class="nav-item">
-                <span class="nav-title">inovação <span class="arrow">v</span></span>
+                Conecte-se <span class="arrow">▼</span>
                 <div class="dropdown-content">
-                    <p>mansaço em cano de pvc</p>
-                    <p>alocação florida em latas de terra</p>
+                    <p>Encontre Pontos de Coleta</p>
+                    <p>Parcerias Rurais</p>
+                    <p>Voluntariado</p>
                 </div>
             </li>
-            <li class="nav-item">
-                <span class=<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Horta Uni Flat</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header class="top-header">
-        <div class="header-content">
-            <div class="header-text">
-                <h1>cultivando campo e cidade</h1>
-                <h2>compartilhando conhecimento</h2>
-                <h2>e amizade</h2>
-            </div>
-            <div class="search-box">
-                <input type="text" placeholde
-
-.right-column-text ul li {
-    margin-bottom: 5px;
-    font-size: 0.9em;
-}
-
-/* Conteúdo oculto para interatividade JavaScript */
-.hidden-content {
-    display: none; /* Escondido por padrão */
-    background-color: #ffeccf; /* Fundo laranja claro para o conteúdo revelado */
-    padding: 10px;
-    margin-top: 10px;
-    border-radius: 5px;
-}
-
-.hidden-content p {
-    margin: 5px 0;
-    font-style: italic;
-}
-r="pesquisa">
-                <p>poder digitar</p>
-                <p>aparece teclado</p>
-            </div>
-        </div>
-    </header>
-
-    <nav class="main-nav">
-        <ul>
-            <li class="nav-item">
-                <span class="nav-title">cursos <span class="arrow">v</span></span>
-                <div class="dropdown-content">
-                    <p>como plantar verdura</p>
-                    <p>como molhar corretamente</p>
-                </div>
-            </li>
-            <li class="nav-item">
-                <span class="nav-title">inovação <span class="arrow">v</span></span>
-                <div class="dropdown-content">
-                    <p>mansaço em cano de pvc</p>
-                    <p>alocação florida em latas de terra</p>
-                </div>
-            </li>
-            <li class="nav-item">
-                <span class="nav-title">linha verde <span class="arrow">v</span></span>
-                <div class="dropdown-content">
-                    <p>aparece 2 linhas</p>
-                </div>
-            </li>
-            <li class="nav-item">
-                <span class="nav-title">tópicos <span class="arrow">v</span></span>
-                <div class="dropdown-content">
-                    <p>hortaliças</p>
-                    <p>verduras</p>
-                </div>
-            </li>
+            <li class="nav-item">Galeria</li>
+            <li class="nav-item">Sobre Nós</li>
         </ul>
     </nav>
 
-    <main class="call-to-action-section">
-        <div class="call-to-action-box">
-            <p>Para ter uma experiência incrível</p>
-            <button id="clickMeButton">clique aqui!</button>
-            <ul>
-                <li>o semento</li>
-                <li>dicas</li>
-                <li>cuidados</li>
-            </ul>
+    <!-- Conteúdo Principal da Plataforma -->
+    <main class="main-content-wrapper">
+        <section class="introduction-section">
+            <h1>Sua Jornada Verde Começa Aqui!</h1>
+            <p>
+                Explore o mundo da compostagem e descubra como pequenos hábitos na cidade podem gerar grandes impactos no campo. Nossa plataforma conecta você ao movimento da sustentabilidade, transformando resíduos orgânicos em vida para a terra.
+            </p>
+        </section>
+
+        <!-- Área Central para a Imagem da Compostagem Integrada -->
+        <div class="compost-image-area">
+            <!-- A imagem de fundo é definida no CSS. Substitua o URL pelo Base64 da sua imagem gerada por IA. -->
         </div>
+
+        <section class="call-to-action-section">
+            <p>Pronto para transformar seu lixo orgânico em um recurso valioso?</p>
+            <button id="ctaButton">Comece a Composto Agora!</button>
+            <ul>
+                <li>🗑️ Reduza seu Lixo</li>
+                <li>🌍 Ajude o Meio Ambiente</li>
+                <li>🌱 Enriqueca o Solo</li>
+                <li>🤝 Conecte-se com Produtores</li>
+            </ul>
+        </section>
+
+        <section class="content-sections">
+            <div class="content-box">
+                <h3>Compostagem Urbana 🏙️</h3>
+                <p>
+                    Descubra como é fácil compostar em apartamentos ou casas pequenas. Transforme restos de comida em adubo rico para suas plantas ou para contribuir com iniciativas locais.
+                </p>
+                <ul>
+                    <li>Benefícios da compostagem doméstica</li>
+                    <li>Guia de resíduos orgânicos permitidos</li>
+                    <li>Tipos de composteiras para espaços urbanos</li>
+                </ul>
+            </div>
+            <div class="content-box">
+                <h3>Compostagem Rural 🚜</h3>
+                <p>
+                    Aprenda sobre a compostagem em larga escala e seu papel fundamental na agricultura sustentável. Entenda como o composto orgânico melhora a saúde do solo e a qualidade dos alimentos.
+                </p>
+                <ul>
+                    <li>O impacto do composto na lavoura</li>
+                    <li>Estudos de caso de fazendas sustentáveis</li>
+                    <li>Como a cidade pode apoiar o campo</li>
+                </ul>
+            </div>
+        </section>
     </main>
 
-    <section class="main-content-grid">
-        <div class="grid-row">
-            <div class="grid-item content-label" id="sementes-label">
-                <h3>Sementes</h3>
-                <div class="hidden-content" id="sementes-details">
-                    <p>quando clica</p>
-                    <p>vai aparecer 2 tipos de sementes:</p>
-                    <p>Semente A (Ex: Tomate)</p>
-                    <p>Semente B (Ex: Alface)</p>
-                </div>
-            </div>
-            <div class="grid-item plant-representation">
-                <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-                <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-            </div>
-            <div class="grid-item plant-representation">
-                <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-                <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-            </div>
-            <div class="grid-item right-column-text">
-                <h3>Como fazer sua horta em espaço pequeno</h3>
-                <ul>
-                    <li>o pegue um cano de PVC</li>
-                    <li>faça buracos...</li>
-                </ul>
-            </div>
-        </div>
+    <!-- Rodapé -->
+    <footer class="footer">
+        <p>&copy; 2025 Plataforma de Compostagem Integrada. Todos os direitos reservados.</p>
+    </footer>
 
-        <div class="grid-row">
-            <div class="grid-item content-label">
-                <h3>cultivos</h3>
-                <p>como plantar a verdura</p>
-                <p>como colher a verdura</p>
-            </div>
-            <div class="grid-item plant-representation">
-                 <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-                <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-            </div>
-            <div class="grid-item plant-representation">
-                 <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-                <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-            </div>
-            <div class="grid-item right-column-text">
-                <h3>como fazer horta em espaço grande</h3>
-                <ul>
-                    <li>faça canteiros</li>
-                    <li>faça burraco grande...</li>
-                </ul>
-            </div>
-        </div>
+    <script>
+        // JavaScript para a interatividade da página
 
-        <div class="grid-row">
-            <div class="grid-item content-label">
-                <h3>Adultos orgânicos</h3>
-                <p>como fazer com resto de comida</p>
-                <p>fezes de animais</p>
-            </div>
-            <div class="grid-item plant-representation">
-                 <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-                <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-            </div>
-            <div class="grid-item plant-representation">
-                 <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-                <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-            </div>
-            <div class="grid-item right-column-text">
-                <h3>Dicas de como começar a fazer a horta</h3>
-                <ul>
-                    <li>prepare o solo com adulto</li>
-                    <li>e plante verduras próximos uns os outros</li>
-                </ul>
-            </div>
-        </div>
+        // Botão "Comece a Composto Agora!"
+        const ctaButton = document.getElementById('ctaButton');
+        if (ctaButton) {
+            ctaButton.addEventListener('click', () => {
+                alert('Incrível! Sua jornada na compostagem começou! Explore nosso guia para os próximos passos. 🌱');
+            });
+        }
 
-        <div class="grid-row last-row">
-            <div class="grid-item content-label">
-                <h3>Verduras</h3>
-            </div>
-            <div class="grid-item plant-representation">
-                 <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-                <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-            </div>
-            <div class="grid-item plant-representation">
-                 <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-                <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-            </div>
-            <div class="grid-item right-column-text">
-                <h3>hortaliças</h3>
-            </div>
-        </div>
-    </section>
 
-    <script src="script.js"></script>
-</body>
-</html>
-"nav-title">linha verde <span class="arrow">v</span></span>
-                <div class="dropdown-content">
-                    <p>aparece 2 linhas</p>
-                </div>
-            </li>
-            <li class="nav-item">
-                <span class="nav-title">tópicos <span class="arrow">v</span></span>
-                <div class="dropdown-content">
-                    <p>hortaliças</p>
-                    <p>verduras</p>
-                </div>
-            </li>
-        </ul>
-    </nav>
+        // Lógica para os dropdowns de navegação
+        document.querySelectorAll('.nav-item').forEach(item => {
+            const dropdownContent = item.querySelector('.dropdown-content');
+            if (dropdownContent) {
+                item.addEventListener('click', (event) => {
+                    event.stopPropagation(); // Impede que o clique feche imediatamente
+                    // Fecha outros dropdowns abertos antes de abrir o atual
+                    document.querySelectorAll('.dropdown-content').forEach(otherDropdown => {
+                        if (otherDropdown !== dropdownContent) {
+                            otherDropdown.style.display = 'none';
+                        }
+                    });
+                    dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+                });
+            }
+        });
 
-    <main class="call-to-action-section">
-        <div class="call-to-action-box">
-            <p>Para ter uma experiência incrível</p>
-            <button id="clickMeButton">clique aqui!</button>
-            <ul>
-                <li>o semento</li>
-                <li>dicas</li>
-                <li>cuidados</li>
-            </ul>
-        </div>
-    </main>
+        // Fecha todos os dropdowns quando clica fora deles
+        window.addEventListener('click', (event) => {
+            document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+                if (!event.target.closest('.nav-item') && dropdown.style.display === 'block') {
+                    dropdown.style.display = 'none';
+                }
+            });
+        });
 
-    <section class="main-content-grid">
-        <div class="grid-row">
-            <div class="grid-item content-label" id="sementes-label">
-                <h3>Sementes</h3>
-                <div class="hidden-content" id="sementes-details">
-                    <p>quando clica</p>
-                    <p>vai aparecer 2 tipos de sementes:</p>
-                    <p>Semente A (Ex: Tomate)</p>
-                    <p>Semente B (Ex: Alface)</p>
-                </div>
-            </div>
-            <div class="grid-item plant-representation">
-                <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-                <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-            </div>
-            <div class="grid-item plant-representation">
-                <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-                <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-            </div>
-            <div class="grid-item right-column-text">
-                <h3>Como fazer sua horta em espaço pequeno</h3>
-                <ul>
-                    <li>o pegue um cano de PVC</li>
-                    <li>faça buracos...</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="grid-row">
-            <div class="grid-item content-label">
-                <h3>cultivos</h3>
-                <p>como plantar a verdura</p>
-                <p>como colher a verdura</p>
-            </div>
-            <div class="grid-item plant-representation">
-                 <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-                <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-            </div>
-            <div class="grid-item plant-representation">
-                 <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-                <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-            </div>
-            <div class="grid-item right-column-text">
-                <h3>como fazer horta em espaço grande</h3>
-                <ul>
-                    <li>faça canteiros</li>
-                    <li>faça burraco grande...</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="grid-row">
-            <div class="grid-item content-label">
-                <h3>Adultos orgânicos</h3>
-                <p>como fazer com resto de comida</p>
-                <p>fezes de animais</p>
-            </div>
-            <div class="grid-item plant-representation">
-                 <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-                <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-            </div>
-            <div class="grid-item plant-representation">
-                 <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-                <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-            </div>
-            <div class="grid-item right-column-text">
-                <h3>Dicas de como começar a fazer a horta</h3>
-                <ul>
-                    <li>prepare o solo com adulto</li>
-                    <li>e plante verduras próximos uns os outros</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="grid-row last-row">
-            <div class="grid-item content-label">
-                <h3>Verduras</h3>
-            </div>
-            <div class="grid-item plant-representation">
-                 <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-                <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-            </div>
-            <div class="grid-item plant-representation">
-                 <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-                <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-            </div>
-            <div class="grid-item right-column-text">
-                <h3>hortaliças</h3>
-            </div>
-        </div>
-    </section>
-
-    <script src="script.js"></script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Horta Uni Flat</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header class="top-header">
-        <div class="header-content">
-            <div class="header-text">
-                <h1>cultivando campo e cidade</h1>
-                <h2>compartilhando conhecimento</h2>
-                <h2>e amizade</h2>
-            </div>
-            <div class="search-box">
-                <input type="text" placeholder="pesquisa">
-                <p>poder digitar</p>
-                <p>aparece teclado</p>
-            </div>
-        </div>
-    </header>
-
-    <nav class="main-nav">
-        <ul>
-            <li class="nav-item">
-                <span class="nav-title">cursos <span class="arrow">v</span></span>
-                <div class="dropdown-content">
-                    <p>como plantar verdura</p>
-                    <p>como molhar corretamente</p>
-                </div>
-            </li>
-            <li class="nav-item">
-                <span class="nav-title">inovação <span class="arrow">v</span></span>
-                <div class="dropdown-content">
-                    <p>mansaço em cano de pvc</p>
-                    <p>alocação florida em latas de terra</p>
-                </div>
-            </li>
-            <li class="nav-item">
-                <span class="nav-title">linha verde <span class="arrow">v</span></span>
-                <div class="dropdown-content">
-                    <p>aparece 2 linhas</p>
-                </div>
-            </li>
-            <li class="nav-item">
-                <span class="nav-title">tópicos <span class="arrow">v</span></span>
-                <div class="dropdown-content">
-                    <p>hortaliças</p>
-                    <p>verduras</p>
-                </div>
-            </li>
-        </ul>
-    </nav>
-
-    <main class="call-to-action-section">
-        <div class="call-to-action-box">
-            <p>Para ter uma experiência incrível</p>
-            <button id="clickMeButton">clique aqui!</button>
-            <ul>
-                <li>o semento</li>
-                <li>dicas</li>
-                <li>cuidados</li>
-            </ul>
-        </div>
-    </main>
-
-    <section class="main-content-grid">
-        <div class="grid-row">
-            <div class="grid-item content-label" id="sementes-label">
-                <h3>Sementes</h3>
-                <div class="hidden-content" id="sementes-details">
-                    <p>quando clica</p>
-                    <p>vai aparecer 2 tipos de sementes:</p>
-                    <p>Semente A (Ex: Tomate)</p>
-                    <p>Semente B (Ex: Alface)</p>
-                </div>
-            </div>
-            <div class="grid-item plant-representation">
-                <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-                <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-            </div>
-            <div class="grid-item plant-representation">
-                <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-                <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-            </div>
-            <div class="grid-item right-column-text">
-                <h3>Como fazer sua horta em espaço pequeno</h3>
-                <ul>
-                    <li>o pegue um cano de PVC</li>
-                    <li>faça buracos...</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="grid-row">
-            <div class="grid-item content-label">
-                <h3>cultivos</h3>
-                <p>como plantar a verdura</p>
-                <p>como colher a verdura</p>
-            </div>
-            <div class="grid-item plant-representation">
-                 <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-                <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-            </div>
-            <div class="grid-item plant-representation">
-                 <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-                <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-            </div>
-            <div class="grid-item right-column-text">
-                <h3>como fazer horta em espaço grande</h3>
-                <ul>
-                    <li>faça canteiros</li>
-                    <li>faça burraco grande...</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="grid-row">
-            <div class="grid-item content-label">
-                <h3>Adultos orgânicos</h3>
-                <p>como fazer com resto de comida</p>
-                <p>fezes de animais</p>
-            </div>
-            <div class="grid-item plant-representation">
-                 <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-                <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-            </div>
-            <div class="grid-item plant-representation">
-                 <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-                <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-            </div>
-            <div class="grid-item right-column-text">
-                <h3>Dicas de como começar a fazer a horta</h3>
-                <ul>
-                    <li>prepare o solo com adulto</li>
-                    <li>e plante verduras próximos uns os outros</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="grid-row last-row">
-            <div class="grid-item content-label">
-                <h3>Verduras</h3>
-            </div>
-            <div class="grid-item plant-representation">
-                 <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-                <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-            </div>
-            <div class="grid-item plant-representation">
-                 <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-                <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-            </div>
-            <div class="grid-item right-column-text">
-                <h3>hortaliças</h3>
-            </div>
-        </div>
-    </section>
-
-    <script src="script.js"></script>
+        // Mensagem quando a página carrega
+        window.onload = function() {
+            console.log("Plataforma de Compostagem Integrada carregada! Vamos compostar!");
+        };
+    </script>
 </body>
 </html>
