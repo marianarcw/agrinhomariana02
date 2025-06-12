@@ -1,195 +1,174 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Horta Uni Flat</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Minha Aplicação com Imagens</title>
+    <!-- Inclui o CDN do Tailwind CSS para estilização -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Estilo personalizado para a fonte Inter */
+        body {
+            font-family: "Inter", sans-serif;
+        }
+        /* Estilos para o modal de mensagem */
+        .modal {
+            display: none; /* Escondido por padrão */
+            position: fixed; /* Posição fixa na tela */
+            z-index: 1000; /* Acima de outros elementos */
+            left: 0;
+            top: 0;
+            width: 100%; /* Largura total */
+            height: 100%; /* Altura total */
+            overflow: auto; /* Habilita scroll se necessário */
+            background-color: rgba(0,0,0,0.4); /* Fundo semi-transparente */
+            display: flex; /* Para centralizar o conteúdo */
+            justify-content: center; /* Centraliza horizontalmente */
+            align-items: center; /* Centraliza verticalmente */
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto; /* Margem automática para centralizar */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Largura responsiva */
+            max-width: 500px; /* Largura máxima */
+            border-radius: 0.75rem; /* Bordas arredondadas */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
+        }
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close-button:hover,
+        .close-button:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
-<body>
-    <header class="top-header">
-        <div class="header-content">
-            <div class="header-text">
-                <h1>cultivando campo e cidade</h1>
-                <h2>compartilhando conhecimento</h2>
-                <h2>e amizade</h2>
-            </div>
-            <div class="search-box">
-                <input type="text" placeholder="pesquisa">
-                <p>poder digitar</p>
-                <p>aparece teclado</p>
-            </div>
+<body class="bg-gradient-to-br from-purple-400 to-indigo-600 min-h-screen flex items-center justify-center p-4">
+
+    <!-- Container principal com estilização Tailwind -->
+    <div class="bg-white p-8 rounded-xl shadow-2xl max-w-lg w-full text-center transform transition-all duration-300 hover:scale-105">
+        <h1 class="text-5xl font-extrabold text-gray-800 mb-6 drop-shadow-lg">
+            Aplicação Interativa
+        </h1>
+        <p id="mainText" class="text-lg text-gray-600 mb-8 leading-relaxed">
+            Bem-vindo! Clique no botão para explorar e ver diferentes imagens.
+        </p>
+
+        <!-- Imagem que será atualizada pelo JavaScript -->
+        <img id="dynamicImage"
+             src="https://placehold.co/400x250/CE93D8/FFFFFF?text=Imagem+Inicial"
+             alt="Imagem de placeholder inicial"
+             class="w-full max-w-full h-auto rounded-lg shadow-md mb-8 transition-opacity duration-500 ease-in-out object-cover aspect-video">
+
+        <!-- Botão interativo com estilos modernos do Tailwind -->
+        <button id="actionButton"
+                class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-300">
+            Trocar Imagem
+        </button>
+
+        <!-- Div para exibir mensagens ou feedback, oculta por padrão -->
+        <div id="messageBox" class="mt-8 p-4 bg-blue-100 text-blue-800 border border-blue-300 rounded-lg hidden">
+            <!-- Mensagens serão inseridas aqui via JavaScript -->
         </div>
-    </header>
+    </div>
 
-    <nav class="main-nav">
-        <ul>
-            <li class="nav-item">
-                <span class="nav-title">cursos <span class="arrow">v</span></span>
-                <div class="dropdown-content">
-                    <p>como plantar verdura</p>
-                    <p>como molhar corretamente</p>
-                </div>
-            </li>
-            <li class="nav-item">
-                <span class="nav-title">inovação <span class="arrow">v</span></span>
-                <div class="dropdown-content">
-                    <p>mansaço em cano de pvc</p>
-                    <p>alocação florida em latas de terra</p>
-                </div>
-            </li>
-            <li class="nav-item">
-                <span class="nav-title">linha verde <span class="arrow">v</span></span>
-                <div class="dropdown-content">
-                    <p>aparece 2 linhas</p>
-                </div>
-            </li>
-            <li class="nav-item">
-                <span class="nav-title">tópicos <span class="arrow">v</span></span>
-                <div class="dropdown-content">
-                    <p>hortaliças</p>
-                    <p>verduras</p>
-                </div>
-            </li>
-        </ul>
-    </nav>
-
-    <main class="call-to-action-section">
-        <div class="call-to-action-box">
-            <p>Para ter uma experiência incrível</p>
-            <button id="clickMeButton">clique aqui!</button>
-            <ul>
-                <li>o semento</li>
-                <li>dicas</li>
-                <li>cuidados</li>
-            </ul>
+    <!-- Modal de mensagem -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="closeModalButton">&times;</span>
+            <p id="modalMessage" class="text-gray-700 text-lg"></p>
         </div>
-    </main>
+    </div>
 
-    <section class="main-content-grid">
-        <div class="grid-row">
-            <div class="grid-item content-label" id="sementes-label">
-                <h3>Sementes</h3>
-                <div class="hidden-content" id="sementes-details">
-                    <p>quando clica</p>
-                    <p>vai aparecer 2 tipos de sementes:</p>
-                    <p>Semente A (Ex: Tomate)</p>
-                    <p>Semente B (Ex: Alface)</p>
-                </div>
-            </div>
-            <div class="grid-item plant-representation">
-                <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-                <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-            </div>
-            <div class="grid-item plant-representation">
-                <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-                <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-            </div>
-            <div class="grid-item right-column-text">
-                <h3>Como fazer sua horta em espaço pequeno</h3>
-                <ul>
-                    <li>o pegue um cano de PVC</li>
-                    <li>faça buracos...</li>
-                </ul>
-            </div>
-        </div>
+    <script>
+        // Obtém referências aos elementos HTML
+        const actionButton = document.getElementById('actionButton');
+        const mainText = document.getElementById('mainText');
+        const dynamicImage = document.getElementById('dynamicImage');
+        const messageBox = document.getElementById('messageBox');
+        const myModal = document.getElementById('myModal');
+        const modalMessage = document.getElementById('modalMessage');
+        const closeModalButton = document.getElementById('closeModalButton');
 
-        <div class="grid-row">
-            <div class="grid-item content-label">
-                <h3>cultivos</h3>
-                <p>como plantar a verdura</p>
-                <p>como colher a verdura</p>
-            </div>
-            <div class="grid-item plant-representation">
-                 <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-                <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-            </div>
-            <div class="grid-item plant-representation">
-                 <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-                <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-            </div>
-            <div class="grid-item right-column-text">
-                <h3>como fazer horta em espaço grande</h3>
-                <ul>
-                    <li>faça canteiros</li>
-                    <li>faça burraco grande...</li>
-                </ul>
-            </div>
-        </div>
+        // Array de URLs de imagens de placeholder para alternar
+        const imageUrls = [
+            'https://placehold.co/400x250/81C784/FFFFFF?text=Natureza',
+            'https://placehold.co/400x250/FFD54F/FFFFFF?text=Tecnologia',
+            'https://placehold.co/400x250/64B5F6/FFFFFF?text=Abstrato',
+            'https://placehold.co/400x250/FF8A65/FFFFFF?text=Cidade',
+            'https://placehold.co/400x250/BA68C8/FFFFFF?text=Espaço'
+        ];
 
-        <div class="grid-row">
-            <div class="grid-item content-label">
-                <h3>Adultos orgânicos</h3>
-                <p>como fazer com resto de comida</p>
-                <p>fezes de animais</p>
-            </div>
-            <div class="grid-item plant-representation">
-                 <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-                <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-            </div>
-            <div class="grid-item plant-representation">
-                 <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-                <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-            </div>
-            <div class="grid-item right-column-text">
-                <h3>Dicas de como começar a fazer a horta</h3>
-                <ul>
-                    <li>prepare o solo com adulto</li>
-                    <li>e plante verduras próximos uns os outros</li>
-                </ul>
-            </div>
-        </div>
+        let imageIndex = 0; // Índice da imagem atual no array
+        let clickCount = 0; // Contador para controlar as interações
 
-        <div class="grid-row last-row">
-            <div class="grid-item content-label">
-                <h3>Verduras</h3>
-            </div>
-            <div class="grid-item plant-representation">
-                 <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-                <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-            </div>
-            <div class="grid-item plant-representation">
-                 <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-                <div class="plant-row">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                </div>
-            </div>
-            <div class="grid-item right-column-text">
-                <h3>hortaliças</h3>
-            </div>
-        </div>
-    </section>
+        /**
+         * Exibe uma mensagem em um modal personalizado.
+         * @param {string} message - A mensagem a ser exibida.
+         */
+        function showMessageModal(message) {
+            modalMessage.textContent = message;
+            myModal.style.display = 'flex'; // Exibe o modal
+        }
 
-    <script src="script.js"></script>
+        // Adiciona um listener de evento para o clique do botão
+        actionButton.addEventListener('click', () => {
+            clickCount++; // Incrementa o contador de cliques
+
+            // Troca a imagem
+            dynamicImage.src = imageUrls[imageIndex];
+            imageIndex = (imageIndex + 1) % imageUrls.length; // Avança para a próxima imagem, voltando ao início se chegar ao fim
+
+            // Lógica para alterar o texto principal e a caixa de mensagem com base nos cliques
+            if (clickCount === 1) {
+                mainText.textContent = 'Que legal! A primeira imagem apareceu.';
+                messageBox.classList.remove('hidden'); // Mostra a caixa de mensagem
+                messageBox.textContent = 'Imagem inicial carregada! 🎉';
+                messageBox.classList.remove('bg-blue-100', 'text-blue-800', 'border-blue-300');
+                messageBox.classList.add('bg-green-100', 'text-green-800', 'border-green-300');
+            } else if (clickCount === 2) {
+                mainText.textContent = 'Nova imagem! As possibilidades são infinitas.';
+                messageBox.textContent = 'Segunda imagem exibida! 🚀';
+                messageBox.classList.remove('bg-green-100', 'text-green-800', 'border-green-300');
+                messageBox.classList.add('bg-yellow-100', 'text-yellow-800', 'border-yellow-300');
+            } else if (clickCount === 3) {
+                mainText.textContent = 'Mais uma imagem para você! Continuamos interagindo.';
+                messageBox.textContent = 'Terceira imagem! O que achou? ✨';
+                messageBox.classList.remove('bg-yellow-100', 'text-yellow-800', 'border-yellow-300');
+                messageBox.classList.add('bg-purple-100', 'text-purple-800', 'border-purple-300');
+            } else {
+                // Após o terceiro clique, exibe uma mensagem no modal
+                showMessageModal(`Você clicou ${clickCount} vezes e viu muitas imagens!`);
+                mainText.textContent = 'Continue clicando para alternar as imagens!';
+                messageBox.textContent = `Imagens alternadas ${clickCount} vezes.`;
+                messageBox.classList.remove('bg-purple-100', 'text-purple-800', 'border-purple-300');
+                messageBox.classList.add('bg-blue-100', 'text-blue-800', 'border-blue-300');
+            }
+        });
+
+        // Adiciona um listener para fechar o modal quando o botão 'x' é clicado
+        closeModalButton.addEventListener('click', () => {
+            myModal.style.display = 'none'; // Esconde o modal
+        });
+
+        // Adiciona um listener para fechar o modal se o usuário clicar fora da caixa de conteúdo
+        window.addEventListener('click', (event) => {
+            if (event.target === myModal) {
+                myModal.style.display = 'none'; // Esconde o modal
+            }
+        });
+
+        // Evento para garantir que a animação comece após o carregamento da janela, se aplicável
+        window.onload = function() {
+            console.log("Página carregada e script pronto!");
+        };
+    </script>
 </body>
 </html>
